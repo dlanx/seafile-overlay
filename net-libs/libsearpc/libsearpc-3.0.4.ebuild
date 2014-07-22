@@ -8,7 +8,7 @@ AUTOTOOLS_AUTORECONF=1
 AUTOTOOLS_IN_SOURCE_BUILD=1
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils multilib python-single-r1 autotools-utils
+inherit python-single-r1 autotools-utils
 
 DESCRIPTION="RPC library for Seafile"
 HOMEPAGE="http://www.seafile.com"
