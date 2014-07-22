@@ -2,56 +2,37 @@
 # Distributed under the terms of the GNU General Public License v2
 # Created by Martin Kupec
 
-EAPI=4
+EAPI=5
 
-inherit eutils autotools python
+AUTOTOOLS_AUTORECONF=1
+AUTOTOOLS_IN_SOURCE_BUILD=1
+
+PYTHON_COMPAT=( python2_7 )
+inherit eutils multilib python-single-r1 autotools-utils
 
 DESCRIPTION="RPC library for Seafile"
 HOMEPAGE="http://www.seafile.com"
-#SRC_URI="http://seafile.googlecode.com/files/seafile-${PV}.tar.gz"
-#SRC_URI="https://github.com/haiwen/libsearpc/archive/v${PV}.tar.gz"
-SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
+SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="~x86 amd64"
 IUSE=""
 
-DEPEND=">=dev-lang/python-2.5
-	>=dev-libs/glib-2.0
-	dev-libs/jansson
+CDEPEND="${PYTHON_DEPS}
+	dev-libs/glib:2
+	dev-libs/jansson"
+
+DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 
-RDEPEND=""
+RDEPEND="${CDEPEND}"
 
-pkg_setup() {
-	python_set_active_version 2
-	python_pkg_setup
-}
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-src_prepare() {
-	./autogen.sh || die "src_prepare failed"
-}
-
-src_configure() {
-	econf || die "econf failed"
-}
-
-
-src_compile() {
-    emake -j1 || die "emake failed"
-}
+DOCS=( README.markdown ChangeLog AUTHORS NEWS)
 
 src_install() {
-	#Fix wrong prefix in libsearpc.pc file
-	cat "${S}/libsearpc.pc" | sed 's/(DESTDIR)//' > "${S}/libsearpc.pc_m"
-	mv "${S}/libsearpc.pc_m" "${S}/libsearpc.pc"
-
-	emake DESTDIR="${D}" install
-
-	local d
-	for d in README* ChangeLog AUTHORS NEWS TODO CHANGES THANKS BUGS \
-			FAQ CREDITS CHANGELOG ; do
-		[[ -s "${d}" ]] && dodoc "${d}"
-	done
+	sed -i -e "s/(DESTDIR)//" "${S}"/libsearpc.pc || die
+	default
 }
