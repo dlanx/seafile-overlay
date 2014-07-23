@@ -19,26 +19,27 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE="console server client python riak fuse"
 
-DEPEND="${PYTHON_DEPS}
+CDEPEND="${PYTHON_DEPS}
 	dev-lang/python[sqlite]
 	>=net-libs/ccnet-${PV}[python,${PYTHON_USEDEP}]
 	net-libs/libevhtp
 	sys-devel/gettext
 	dev-libs/jansson
 	dev-libs/libevent
-	virtual/pkgconfig
-	client? ( >=net-libs/ccnet-2.1.2[client] )
+	client? ( net-libs/ccnet[client] )
 	server? ( 	>=net-libs/ccnet-${PV}[server]
-				=dev-python/django-1.5*
-				www-servers/gunicorn	
-				dev-python/simplejson
-				dev-python/mako
-				dev-python/webpy
-				dev-python/Djblets
-				dev-python/chardet	)"
+				=dev-python/django-1.5*[${PYTHON_USEDEP}]
+				www-servers/gunicorn[${PYTHON_USEDEP}]
+				dev-python/simplejson[${PYTHON_USEDEP}]
+				dev-python/mako[${PYTHON_USEDEP}]
+				dev-python/webpy[${PYTHON_USEDEP}]
+				dev-python/Djblets[${PYTHON_USEDEP}]
+				dev-python/chardet[${PYTHON_USEDEP}] )"
 
+DEPEND="${CDEPEND}
+	virtual/pkgconfig"
 
-RDEPEND=""
+RDEPEND="${CDEPEND}"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -56,8 +57,8 @@ src_configure() {
 
 src_compile() {
 	# dev-lang/vala does not provide a valac symlink
-	mkdir ${S}/tmpbin
-	ln -s $(echo $(whereis valac-) | grep -oE "[^[[:space:]]*$") ${S}/tmpbin/valac
+	mkdir "${S}"/tmpbin
+	ln -s $(echo $(whereis valac-) | grep -oE "[^[[:space:]]*$") "${S}"/tmpbin/valac
 	PATH="${S}/tmpbin/:$PATH" emake -j1 || die "emake failed"
 }
 
@@ -65,7 +66,7 @@ src_install() {
 	emake DESTDIR="${D}" install
 	SEAFILE_SHARE_PATH="/usr/share/seafile"
 	insinto ${SEAFILE_SHARE_PATH}/${PV}
-	doins -r ${S}/scripts
-	dodoc ${S}/doc/cli-readme.txt 
-	doman ${S}/doc/*.1
+	doins -r "${S}"/scripts
+	dodoc "${S}"/doc/cli-readme.txt
+	doman "${S}"/doc/*.1
 }

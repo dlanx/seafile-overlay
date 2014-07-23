@@ -4,10 +4,9 @@
 
 EAPI=5
 
-AUTOTOOLS_IN_SOURCE_BUILD=1
-
+CMAKE_IN_SOURCE_BUILD=1
 PYTHON_COMPAT=( python2_7 )
-inherit eutils python-single-r1 autotools-utils
+inherit eutils python-single-r1 cmake-utils
 
 DESCRIPTION="Cloud file syncing software"
 HOMEPAGE="http://www.seafile.com"
@@ -21,15 +20,8 @@ DEPEND="${PYTHON_DEPS}
 	net-misc/seafile[client,${PYTHON_USEDEP}]
 	dev-libs/jansson"
 
-RDEPEND=""
+RDEPEND="${DEPEND}"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-src_configure() {
-	:
-}
-
-src_compile() {
-	cmake . || die "src_compile failed"
-	emake -j1 || die "emake failed"
-}
+DOCS=( README.md dev-guide.md )
