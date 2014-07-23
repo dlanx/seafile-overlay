@@ -16,7 +16,7 @@ SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 amd64"
+KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 CDEPEND="${PYTHON_DEPS}

@@ -47,7 +47,7 @@ src_configure() {
 
 src_compile() {
 	# dev-lang/vala does not provide a valac symlink
-	mkdir "${S}"/tmpbin
+	mkdir "${S}"/tmpbin || die
 	ln -s $(echo $(whereis valac-) | grep -oE "[^[[:space:]]*$") "${S}"/tmpbin/valac
 	PATH="${S}/tmpbin/:$PATH" emake -j1 || die "emake failed"
 }
