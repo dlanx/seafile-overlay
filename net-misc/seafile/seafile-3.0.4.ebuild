@@ -2,27 +2,31 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=5
 
-inherit eutils python autotools
+AUTOTOOLS_AUTORECONF=1
+AUTOTOOLS_IN_SOURCE_BUILD=1
+
+PYTHON_COMPAT=( python2_7 )
+inherit eutils python-single-r1 autotools-utils
 
 DESCRIPTION="Cloud file syncing software"
 HOMEPAGE="http://www.seafile.com"
-SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
+SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE="console server client python riak fuse"
 
-DEPEND="
-	>=dev-lang/python-2.5[sqlite]
-	>=net-libs/ccnet-${PV}[python]
-	>=net-libs/libevhtp-1.1.6
+DEPEND="${PYTHON_DEPS}
+	dev-lang/python[sqlite]
+	>=net-libs/ccnet-${PV}[python,${PYTHON_USEDEP}]
+	net-libs/libevhtp
 	sys-devel/gettext
-	virtual/pkgconfig
 	dev-libs/jansson
 	dev-libs/libevent
+	virtual/pkgconfig
 	client? ( >=net-libs/ccnet-2.1.2[client] )
 	server? ( 	>=net-libs/ccnet-${PV}[server]
 				=dev-python/django-1.5*
@@ -36,24 +40,18 @@ DEPEND="
 
 RDEPEND=""
 
-pkg_setup() {
-	python_set_active_version 2
-	python_pkg_setup
-}
-
-src_prepare() {
-	./autogen.sh || die "src_prepare failed"
-	# epatch "${FILESDIR}/${PV}-seafile-admin-datadir-pathfix.patch"
-}
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_configure() {
-	econf \
-		$(use_enable fuse) \
-		$(use_enable riak) \
-		$(use_enable client) \
-		$(use_enable server) \
-		$(use_enable python) \
-		$(use_enable console) \ 
+	local myeconfargs=(
+		$(use_enable fuse)
+		$(use_enable riak)
+		$(use_enable client)
+		$(use_enable server)
+		$(use_enable python)
+		$(use_enable console)
+	)
+	autotools-utils_src_configure
 }
 
 src_compile() {
