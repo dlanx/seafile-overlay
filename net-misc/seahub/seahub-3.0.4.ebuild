@@ -1,13 +1,11 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# Created by Martin Kupec
+# $Header: $
 
 EAPI=5
 
-AUTOTOOLS_IN_SOURCE_BUILD=1
-
 PYTHON_COMPAT=( python2_7 )
-inherit eutils python-single-r1 autotools-utils
+inherit eutils python-single-r1
 
 DESCRIPTION="Cloud file syncing software"
 HOMEPAGE="http://www.seafile.com"
@@ -33,7 +31,7 @@ S="${WORKDIR}"/${P}-server
 src_install() {
 	SEAFILE_PATH="/opt/seafile/seafile-server"
 	insinto ${SEAFILE_PATH}
-	doins -r ${WORKDIR}/${P}
+	doins -r ${S}/*
 
 	elog "Seahub has been installed to ${SEAFILE_PATH}/${P}"
 	elog "Follow the instructions from the seafile-wiki to create the configuration files:"
