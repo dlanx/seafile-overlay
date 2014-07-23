@@ -2,25 +2,31 @@
 # Distributed under the terms of the GNU General Public License v2
 # Created by Martin Kupec
 
-EAPI=4
+EAPI=5
 
-inherit eutils python autotools
+AUTOTOOLS_IN_SOURCE_BUILD=1
+
+PYTHON_COMPAT=( python2_7 )
+inherit eutils python-single-r1 autotools-utils
 
 DESCRIPTION="Cloud file syncing software"
 HOMEPAGE="http://www.seafile.com"
-SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
+SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 
-DEPEND=">=net-misc/seafile-${PV}[client] dev-libs/jansson"
+DEPEND="${PYTHON_DEPS}
+	net-misc/seafile[client,${PYTHON_USEDEP}]
+	dev-libs/jansson"
 
 RDEPEND=""
 
-pkg_setup() {
-	python_set_active_version 2
-	python_pkg_setup
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+src_configure() {
+	:
 }
 
 src_compile() {
