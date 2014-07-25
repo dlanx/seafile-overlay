@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+	<email>dlan@gentoo.org</email>
+	<name>Yixun Lan</name>
+</maintainer>
+<longdescription lang="en">
+</longdescription>
+<use>
+    <flag name="defer_accept">Enable TCP's delay accepting of new connections</flag>
+    <flag name="regex">Enable regular expression library by using <pkg>dev-libs/oniguruma</pkg></flag>
+</use>
+</pkgmetadata>
