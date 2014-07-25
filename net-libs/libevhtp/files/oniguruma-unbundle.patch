@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 1916d91..91de8c3 100644
+index 1916d91..a394f79 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -89,53 +89,7 @@ endif()
@@ -65,3 +65,11 @@ index 1916d91..91de8c3 100644
  		${OPENSSL_LIBRARIES})
  
  if (NOT ${LIBEVENT_PTHREADS_FOUND})
+@@ -186,7 +141,6 @@ install (TARGETS libevhtp DESTINATION lib)
+ install (FILES evhtp.h DESTINATION include)
+ install (FILES htparse/htparse.h DESTINATION include)
+ install (FILES evthr/evthr.h DESTINATION include)
+-install (FILES oniguruma/onigposix.h DESTINATION include)
+ 
+ find_library (LIB_DL dl)
+ set (SYS_LIBS ${LIB_DL})
