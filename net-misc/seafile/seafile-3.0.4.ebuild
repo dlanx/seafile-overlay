@@ -8,7 +8,7 @@ AUTOTOOLS_AUTORECONF=1
 AUTOTOOLS_IN_SOURCE_BUILD=1
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils python-single-r1 autotools-utils
+inherit eutils python-single-r1 autotools-utils vala
 
 DESCRIPTION="Cloud file syncing software"
 HOMEPAGE="http://www.seafile.com"
