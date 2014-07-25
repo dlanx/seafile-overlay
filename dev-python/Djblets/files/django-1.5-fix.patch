@@ -1,0 +1,26 @@
+diff --git a/Djblets.egg-info/requires.txt b/Djblets.egg-info/requires.txt
+index 3f404c5..87b61e8 100644
+--- a/Djblets.egg-info/requires.txt
++++ b/Djblets.egg-info/requires.txt
+@@ -1,5 +1,5 @@
+-Django>=1.4.13,<1.5
++Django>=1.4.13
+ django-pipeline==1.2.24
+ feedparser>=5.1.2
+ PIL
+-pytz
+\ No newline at end of file
++pytz
+diff --git a/djblets/__init__.py b/djblets/__init__.py
+index 7806a44..7403b89 100644
+--- a/djblets/__init__.py
++++ b/djblets/__init__.py
+@@ -34,7 +34,7 @@
+ VERSION = (0, 7, 30, 'final', 0, True)
+ 
+ # Required version of Django
+-django_version = 'Django>=1.4.13,<1.5'
++django_version = 'Django>=1.4.13'
+ 
+ def get_version_string():
+     version = '%s.%s' % (VERSION[0], VERSION[1])

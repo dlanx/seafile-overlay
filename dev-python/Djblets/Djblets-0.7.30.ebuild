@@ -24,3 +24,5 @@ RDEPEND="
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/django-evolution[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+
+PATCHES=( "${FILESDIR}"/django-1.5-fix.patch )
