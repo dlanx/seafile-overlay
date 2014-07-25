@@ -11,7 +11,7 @@ DESCRIPTION="Cloud file syncing software"
 HOMEPAGE="http://www.seafile.com"
 SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}-server.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="fastcgi"
