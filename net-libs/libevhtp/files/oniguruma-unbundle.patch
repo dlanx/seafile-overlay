@@ -1,0 +1,67 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1916d91..91de8c3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -89,53 +89,7 @@ endif()
+ 	
+ 
+ if (NOT EVHTP_DISABLE_REGEX)
+-	CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/oniguruma/config.h.in ${CMAKE_CURRENT_BINARY_DIR}/oniguruma/config.h)
+-	set(ONIG_SOURCES
+-		oniguruma/regerror.c
+-		oniguruma/regparse.c
+-		oniguruma/regext.c
+-		oniguruma/regcomp.c
+-		oniguruma/regexec.c
+-		oniguruma/reggnu.c
+-		oniguruma/regenc.c
+-		oniguruma/regsyntax.c
+-		oniguruma/regtrav.c
+-		oniguruma/regversion.c
+-		oniguruma/st.c
+-		oniguruma/regposix.c
+-		oniguruma/regposerr.c
+-		oniguruma/enc/unicode.c
+-		oniguruma/enc/ascii.c
+-		oniguruma/enc/utf8.c
+-		oniguruma/enc/utf16_be.c
+-		oniguruma/enc/utf16_le.c
+-		oniguruma/enc/utf32_be.c
+-		oniguruma/enc/utf32_le.c
+-		oniguruma/enc/euc_jp.c
+-		oniguruma/enc/sjis.c
+-		oniguruma/enc/iso8859_1.c
+-		oniguruma/enc/iso8859_2.c
+-		oniguruma/enc/iso8859_3.c
+-		oniguruma/enc/iso8859_4.c
+-		oniguruma/enc/iso8859_5.c
+-		oniguruma/enc/iso8859_6.c
+-		oniguruma/enc/iso8859_7.c
+-		oniguruma/enc/iso8859_8.c
+-		oniguruma/enc/iso8859_9.c
+-		oniguruma/enc/iso8859_10.c
+-		oniguruma/enc/iso8859_11.c
+-		oniguruma/enc/iso8859_13.c
+-		oniguruma/enc/iso8859_14.c
+-		oniguruma/enc/iso8859_15.c
+-		oniguruma/enc/iso8859_16.c
+-		oniguruma/enc/euc_tw.c
+-		oniguruma/enc/euc_kr.c
+-		oniguruma/enc/big5.c
+-		oniguruma/enc/gb18030.c
+-		oniguruma/enc/koi8_r.c
+-		oniguruma/enc/cp1251.c)
+-else()
+-	set(ONIG_SOURCES "")
++	find_library (REGEX_LIBRARY onig)
+ endif()
+ 
+ 
+@@ -154,6 +108,7 @@ set(LIBEVHTP_EXTERNAL_LIBS
+ 		${LIBEVENT_LIBRARY}
+ 		${LIBEVENT_PTHREADS_LIBRARY}
+ 		${LIBEVENT_OPENSSL_LIBRARY}
++		${REGEX_LIBRARY}
+ 		${OPENSSL_LIBRARIES})
+ 
+ if (NOT ${LIBEVENT_PTHREADS_FOUND})

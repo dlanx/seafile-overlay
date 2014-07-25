@@ -16,10 +16,13 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+defer_accept +threads +regex +ssl"
 
 DEPEND="dev-libs/libevent
+	>=dev-libs/oniguruma-5.9.2[static-libs]
 	threads? ( dev-libs/libevent[threads] )
 	ssl? ( dev-libs/libevent[ssl] )"
 
 RDEPEND=""
+
+PATCHES=( "${FILESDIR}"/oniguruma-unbundle.patch )
 
 src_configure() {
 	local mycmakeargs=(
@@ -29,13 +32,4 @@ src_configure() {
 		$(cmake-utils_useno ssl EVHTP_DISABLE_SSL)
 	)
 	cmake-utils_src_configure
-}
-
-src_install() {
-	cmake-utils_src_install
-
-	# prevent collision with oniguruma
-	if use regex && has_version dev-libs/oniguruma ; then
-		rm ${D}/usr/include/onigposix.h || die
-	fi
 }
