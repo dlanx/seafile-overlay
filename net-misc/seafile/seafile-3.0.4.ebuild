@@ -43,6 +43,13 @@ RDEPEND="${CDEPEND}"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+PATCHES=( "${FILESDIR}"/vala-fix.patch )
+
+src_prepare() {
+	vala_src_prepare
+	autotools-utils_src_prepare
+}
+
 src_configure() {
 	local myeconfargs=(
 		$(use_enable fuse)
@@ -53,13 +60,6 @@ src_configure() {
 		$(use_enable console)
 	)
 	autotools-utils_src_configure
-}
-
-src_compile() {
-	# dev-lang/vala does not provide a valac symlink
-	mkdir "${S}"/tmpbin
-	ln -s $(echo $(whereis valac-) | grep -oE "[^[[:space:]]*$") "${S}"/tmpbin/valac
-	PATH="${S}/tmpbin/:$PATH" emake -j1 || die "emake failed"
 }
 
 src_install() {

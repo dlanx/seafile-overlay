@@ -1,0 +1,18 @@
+diff --git a/lib/Makefile.am b/lib/Makefile.am
+index 94c077e..a990349 100644
+--- a/lib/Makefile.am
++++ b/lib/Makefile.am
+@@ -33,11 +33,11 @@ seafile-rpc-wrapper.c: seafile-object.h
+ 
+ .vala.c:
+ 	rm -f $@
+-	valac -C --pkg posix ${seafile_object_define}
++	${VALAC} -C --pkg posix ${seafile_object_define}
+ 
+ seafile-object.h: ${seafile_object_define}
+ 	rm -f $@
+-	valac --pkg posix ${seafile_object_define} -C -H seafile-object.h
++	${VALAC} --pkg posix ${seafile_object_define} -C -H seafile-object.h
+ 
+ DISTCLEANFILES = ${searpc_gen}
+ 
