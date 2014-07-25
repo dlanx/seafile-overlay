@@ -1,8 +1,8 @@
-seafile-portage-overlay
+seafile-overlay
 =======================
 
-Portage overlay to maintain seafile ebuilds.
+Portage overlay aim to push seafile ebuilds into main portage tree.
 
 Can be installed using layman with the following command:
 
-```layman -f -o https://raw.github.com/steveeJ/seafile-portage-overlay/master/seafile-portage-overlay.xml -a seafile```
+original from https://raw.github.com/steveeJ/seafile-portage-overlay
