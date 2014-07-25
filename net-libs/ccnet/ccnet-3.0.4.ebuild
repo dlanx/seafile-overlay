@@ -34,7 +34,7 @@ RDEPEND="${CDEPEND}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_configure() {
-	local mycmakeargs=(
+	local myeconfargs=(
 		$(use_enable server)
 		$(use_enable client)
 		$(use_enable python)
