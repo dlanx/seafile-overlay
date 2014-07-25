@@ -15,8 +15,8 @@ HOMEPAGE="http://www.seafile.com"
 SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="~x86 ~amd64"
+LICENSE="GPL-3"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 CDEPEND="${PYTHON_DEPS}

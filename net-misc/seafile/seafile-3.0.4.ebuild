@@ -14,9 +14,9 @@ DESCRIPTION="Cloud file syncing software"
 HOMEPAGE="http://www.seafile.com"
 SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="console server client python riak fuse"
 
 CDEPEND="${PYTHON_DEPS}
