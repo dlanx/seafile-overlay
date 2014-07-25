@@ -8,7 +8,7 @@ AUTOTOOLS_AUTORECONF=1
 AUTOTOOLS_IN_SOURCE_BUILD=1
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils autotools-utils python-single-r1
+inherit eutils autotools-utils python-single-r1 vala
 
 DESCRIPTION="Networking library for Seafile"
 HOMEPAGE="http://www.seafile.com"
@@ -33,6 +33,13 @@ RDEPEND="${CDEPEND}"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+PATCHES=( "${FILESDIR}"/valac-fix.patch )
+
+src_prepare() {
+	vala_src_prepare
+	autotools-utils_src_prepare
+}
+
 src_configure() {
 	local myeconfargs=(
 		$(use_enable server)
@@ -43,11 +50,4 @@ src_configure() {
 		--enable-console
 	)
 	autotools-utils_src_configure
-}
-
-src_compile() {
-	# dev-lang/vala does not provide a valac symlink
-	mkdir "${S}"/tmpbin || die
-	ln -s $(echo $(whereis valac-) | grep -oE "[^[[:space:]]*$") "${S}"/tmpbin/valac
-	PATH="${S}/tmpbin/:$PATH" emake -j1 || die "emake failed"
 }
