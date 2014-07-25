@@ -24,6 +24,7 @@ CDEPEND="${PYTHON_DEPS}
 	dev-libs/jansson"
 
 DEPEND="${CDEPEND}
+	sys-apps/sed
 	virtual/pkgconfig"
 
 RDEPEND="${CDEPEND}"

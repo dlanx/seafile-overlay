@@ -1,3 +1,13 @@
+
+net-libs/libevhtp:
+  1) USEs description
+  2) unbundle dev-libs/oniguruma
+
 net-misc/seafile:
-USEs description
-check DEPENDs
+  1) USEs description
+  2) check DEPENDs
+
+net-libs/ccnet:
+  1) USEs description
+  2) dev-lang/vala symbol link fix
+

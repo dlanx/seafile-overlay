@@ -20,9 +20,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE="client server python cluster ldap"
 
 CDEPEND="${PYTHON_DEPS}
-	=net-libs/libsearpc-${PV}[${PYTHON_USEDEP}]
+	~net-libs/libsearpc-${PV}[${PYTHON_USEDEP}]
 	dev-libs/glib:2
-	>=dev-lang/vala-0.8
+	dev-lang/vala
 	dev-db/libzdb
 	dev-libs/libevent"
 
