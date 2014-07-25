@@ -43,7 +43,8 @@ RDEPEND="${CDEPEND}"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-PATCHES=( "${FILESDIR}"/vala-fix.patch )
+PATCHES=( "${FILESDIR}"/vala-fix.patch
+	"${FILESDIR}"/parallel-make-fix.patch )
 
 src_prepare() {
 	vala_src_prepare

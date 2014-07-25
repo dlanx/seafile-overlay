@@ -1,0 +1,13 @@
+diff --git a/lib/Makefile.am b/lib/Makefile.am
+index a990349..2306e16 100644
+--- a/lib/Makefile.am
++++ b/lib/Makefile.am
+@@ -58,7 +58,7 @@ libseafile_common_la_LIBADD = @GLIB2_LIBS@  @GOBJECT_LIBS@ -lssl -lcrypto @LIB_G
+ 					 -levent @SEARPC_LIBS@ @LIB_SHELL32@ \
+ 	@ZLIB_LIBS@
+ 
+-searpc_gen = searpc-signature.h searpc-marshal.h
++searpc_gen = searpc-marshal.h
+ 
+ gensource: ${searpc_gen}
+ 
