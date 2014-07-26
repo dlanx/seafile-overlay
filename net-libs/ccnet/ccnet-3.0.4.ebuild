@@ -33,7 +33,8 @@ RDEPEND="${CDEPEND}"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-PATCHES=( "${FILESDIR}"/valac-fix.patch )
+PATCHES=( "${FILESDIR}"/valac-fix.patch
+	"${FILESDIR}"/make-fix-parallel.patch )
 
 src_prepare() {
 	vala_src_prepare
@@ -49,8 +50,8 @@ src_configure() {
 		$(use_enable demo compile-demo)
 		$(use_enable ldap)
 		--enable-console
-		--diable-server-pkg
-		--diable-static-build
+		--disable-server-pkg
+		--disable-static-build
 	)
 	autotools-utils_src_configure
 }

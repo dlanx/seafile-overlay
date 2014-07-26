@@ -1,0 +1,17 @@
+diff --git a/lib/Makefile.am b/lib/Makefile.am
+index 47e2fa0..cd284db 100644
+--- a/lib/Makefile.am
++++ b/lib/Makefile.am
+@@ -80,7 +80,11 @@ searpc_gen = searpc-signature.h searpc-marshal.h
+ 
+ gensource: ${searpc_gen}
+ 
+-${searpc_gen}: $(top_srcdir)/lib/rpc_table.py
++searpc-signature.h: do_searpc_gen
++
++searpc-marshal.h: do_searpc_gen
++
++do_searpc_gen: $(top_srcdir)/lib/rpc_table.py
+ 	@echo "[libsearpc]: generating rpc header files"
+ 	@PYTHON@ `which searpc-codegen.py` $(top_srcdir)/lib/rpc_table.py
+ 	@echo "[libsearpc]: done"

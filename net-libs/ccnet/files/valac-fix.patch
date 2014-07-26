@@ -1,8 +1,8 @@
 diff --git a/lib/Makefile.am b/lib/Makefile.am
-index 902a7c8..573e055 100644
+index 902a7c8..47e2fa0 100644
 --- a/lib/Makefile.am
 +++ b/lib/Makefile.am
-@@ -70,13 +70,13 @@ ccnet-client.c: ccnet-object.h
+@@ -70,11 +70,11 @@ ccnet-client.c: ccnet-object.h
  
  ccnet-object.h: ${ccnet_object_define}
  	rm -f $@
@@ -14,8 +14,5 @@ index 902a7c8..573e055 100644
 -	valac -C --pkg posix ${ccnet_object_define}
 +	${VALAC} -C --pkg posix ${ccnet_object_define}
  
--searpc_gen = searpc-signature.h searpc-marshal.h
-+searpc_gen = searpc-marshal.h
- 
- gensource: ${searpc_gen}
+ searpc_gen = searpc-signature.h searpc-marshal.h
  

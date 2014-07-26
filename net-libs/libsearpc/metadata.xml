@@ -8,10 +8,6 @@
 <longdescription lang="en">
 </longdescription>
 <use>
-    <flag name="client">Enable seafile client</flag>
-    <flag name="cluster">Enable seafile cluster</flag>
     <flag name="demo">Enable seafile demo installation</flag>
-    <flag name="server">Enable seafile server</flag>
-    <flag name="python">Enable build ccnet python binding</flag>
 </use>
 </pkgmetadata>

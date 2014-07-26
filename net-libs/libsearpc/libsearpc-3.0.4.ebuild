@@ -17,7 +17,7 @@ SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SLOT="0"
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="demo"
 
 CDEPEND="${PYTHON_DEPS}
 	dev-libs/glib:2
@@ -33,7 +33,16 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DOCS=( README.markdown ChangeLog AUTHORS NEWS)
 
+src_configure() {
+	local myeconfargs=(
+		$(use_enable demo compile-demo)
+		--disable-server-pkg
+	)
+	autotools-utils_src_configure
+}
+
 src_install() {
 	sed -i -e "s/(DESTDIR)//" "${S}"/libsearpc.pc || die
 	default
 }
+
