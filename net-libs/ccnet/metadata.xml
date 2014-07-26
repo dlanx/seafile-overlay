@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+	<email>dlan@gentoo.org</email>
+	<name>Yixun Lan</name>
+</maintainer>
+<longdescription lang="en">
+</longdescription>
+<use>
+    <flag name="client">Enable seafile client</flag>
+    <flag name="cluster">Enable seafile cluster</flag>
+    <flag name="server">Enable seafile server</flag>
+    <flag name="python">Enable build ccnet python binding</flag>
+</use>
+</pkgmetadata>

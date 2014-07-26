@@ -17,7 +17,7 @@ SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SLOT="0"
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"
-IUSE="client server python cluster ldap"
+IUSE="client demo server python cluster ldap"
 
 CDEPEND="${PYTHON_DEPS}
 	~net-libs/libsearpc-${PV}[${PYTHON_USEDEP}]
@@ -46,8 +46,11 @@ src_configure() {
 		$(use_enable client)
 		$(use_enable python)
 		$(use_enable cluster)
+		$(use_enable demo compile-demo)
 		$(use_enable ldap)
 		--enable-console
+		--diable-server-pkg
+		--diable-static-build
 	)
 	autotools-utils_src_configure
 }
