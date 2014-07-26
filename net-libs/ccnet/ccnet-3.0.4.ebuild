@@ -24,7 +24,10 @@ CDEPEND="${PYTHON_DEPS}
 	dev-libs/glib:2
 	dev-lang/vala
 	dev-db/libzdb
-	dev-libs/libevent"
+	dev-db/sqlite:3
+	dev-libs/openssl
+	dev-libs/libevent
+	sys-apps/util-linux"
 
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
@@ -54,4 +57,11 @@ src_configure() {
 		--disable-static-build
 	)
 	autotools-utils_src_configure
+}
+
+pkg_postinst() {
+	elog ""
+	elog "Please install one of following packages if deploy ccnet locally"
+	elog " virtual/mysql"
+	elog " dev-db/postgresql-server"
 }
