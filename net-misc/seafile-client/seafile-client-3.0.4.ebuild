@@ -15,8 +15,15 @@ SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE=""
 
 DEPEND="${PYTHON_DEPS}
+	dev-db/sqlite:3
+	dev-qt/qtcore
+	dev-qt/qtgui
+	net-libs/ccnet
+	net-libs/libsearpc
+	dev-libs/openssl
 	net-misc/seafile[client,${PYTHON_USEDEP}]
 	dev-libs/jansson"
 
