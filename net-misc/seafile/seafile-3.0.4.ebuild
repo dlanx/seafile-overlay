@@ -17,7 +17,7 @@ SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="console server client python riak fuse"
+IUSE="server client python riak fuse"
 
 CDEPEND="${PYTHON_DEPS}
 	dev-lang/python[sqlite]
@@ -58,7 +58,8 @@ src_configure() {
 		$(use_enable client)
 		$(use_enable server)
 		$(use_enable python)
-		$(use_enable console)
+		--enable-server-pkg
+		--enable-static-build
 	)
 	autotools-utils_src_configure
 }

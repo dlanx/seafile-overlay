@@ -2,9 +2,16 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer>
-<email>dlan@gentoo.org</email>
-<name>Lan Yixun (dlan)</name>
+	<email>dlan@gentoo.org</email>
+	<name>Yixun Lan</name>
 </maintainer>
 <longdescription lang="en">
 </longdescription>
+<use>
+    <flag name="riak">Enable riak backend</flag>
+    <flag name="client">Enable seafile client</flag>
+    <flag name="fuse">Enable fuse virtual file system</flag>
+    <flag name="server">Enable seafile server</flag>
+    <flag name="python">Enable build ccnet python binding</flag>
+</use>
 </pkgmetadata>
