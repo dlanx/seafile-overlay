@@ -19,7 +19,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-inherit eutils python-single-r1 cmake-utils
+inherit ${scm_eclass} eutils python-single-r1 cmake-utils
 
 DESCRIPTION="Cloud file syncing software"
 HOMEPAGE="http://www.seafile.com"
@@ -32,7 +32,9 @@ IUSE=""
 DEPEND="${PYTHON_DEPS}
 	dev-db/sqlite:3
 	dev-qt/qtcore
+	dev-qt/qtdbus
 	dev-qt/qtgui
+	dev-qt/qtwebkit
 	net-libs/ccnet
 	net-libs/libsearpc
 	dev-libs/openssl
