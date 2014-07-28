@@ -8,7 +8,7 @@ inherit eutils multilib cmake-utils
 
 DESCRIPTION="Flexible replacement for libevent's httpd API"
 HOMEPAGE="https://github.com/ellzey/libevhtp/"
-SRC_URI="https://github.com/ellzey/libevhtp/archive/${P}.tar.gz"
+SRC_URI="https://github.com/ellzey/libevhtp/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
