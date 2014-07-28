@@ -2,3 +2,6 @@
 # This combination does not allow seafile-client to work properly.
 =net-misc/seafile-2.1.2
 =net-misc/seafile-client-2.1.2
+
+# not tested, 3.1.1 hasn't released
+=net-misc/seafile-client-3.1.1
