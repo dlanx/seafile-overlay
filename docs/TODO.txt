@@ -2,18 +2,18 @@
 (* - Yes, done)
 
 net-libs/libevhtp:
-  1) USEs description
+* 1) USEs description
 * 2) unbundle dev-libs/oniguruma
 
 net-libs/ccnet:
-  1) USEs description
+* 1) USEs description
 * 2) dev-lang/vala symbol link fix
 * 3) parallel make problem
 
 net-libs/libsearpc
-  1) USEs description
+* 1) USEs description
 
 net-misc/seafile:
-  1) USEs description
-  2) check DEPENDs
+* 1) USEs description
+  2) check DEPENDs, dev-python/Djblets-0.7.x do not support django-1.5.x
 
